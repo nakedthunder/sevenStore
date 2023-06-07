@@ -7,6 +7,8 @@ import com.example.sevenStore.store.member.MemberServiceImpl;
 import com.example.sevenStore.store.order.Order;
 import com.example.sevenStore.store.order.OrderService;
 import com.example.sevenStore.store.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) {
@@ -14,9 +16,16 @@ public class OrderApp {
       /*  MemberService memberService = new MemberServiceImpl(memberRepository);
         OrderService orderService = new OrderServiceImpl(memberRepository, discountPolicy);
 */
+
+        /*
         AppConfig appConfig = new AppConfig();
         MemberService memberService = appConfig.memberService();
         OrderService orderService = appConfig.orderService();
+        * */
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
         // given: 회원가입을 한다.
         long memberId = 1L;
