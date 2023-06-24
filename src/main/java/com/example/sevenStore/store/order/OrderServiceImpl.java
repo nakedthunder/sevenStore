@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService{
         // createOrder를 사용할꺼니깐, 그걸 내가사용할 수 있게 만들어줘야지
 
         Member member = memberRepository.findById(memberId);
-        int discountPrice = discountPolicy.discount(member, 1000);
+        int discountPrice = discountPolicy.discount(member, itemPrice);
 
         // Order생성자를 통해서 반환값 처리하면서 주문생성함
         return new Order(memberId, itemName, itemPrice, discountPrice);

@@ -1,16 +1,20 @@
 package com.example.sevenStore.store.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 public class MemberServiceImpl implements MemberService{
 
-    // 아 내 코드는 의존관게 주입을 해준거고 이거는 일단 OCP 위반으로
-    // impl()을 호출해서 코드작성
-   //private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final MemberRepository memberRepository;
+    // @Autowired 어노테이션을 직접 적용하여 필드 주입을 수행
+   @Autowired
+    MemberRepository memberRepository;
 
-    public MemberServiceImpl(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
-
+    // 생성자 주입
+//    private final MemberRepository memberRepository;
+//
+//    public MemberServiceImpl(MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    }
 
     @Override
     public void join(Member member) {

@@ -1,8 +1,12 @@
 package com.example.sevenStore.store.member;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     // 담을 저장소 Map생성
