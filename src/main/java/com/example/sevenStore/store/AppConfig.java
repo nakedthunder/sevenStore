@@ -1,23 +1,23 @@
 package com.example.sevenStore.store;
 
 import com.example.sevenStore.store.discount.DiscountPolicy;
-import com.example.sevenStore.store.discount.FixDiscountPolicy;
 import com.example.sevenStore.store.discount.RateDiscountPolicy;
-import com.example.sevenStore.store.member.MemberRepository;
-import com.example.sevenStore.store.member.MemberService;
-import com.example.sevenStore.store.member.MemberServiceImpl;
-import com.example.sevenStore.store.member.MemoryMemberRepository;
+import com.example.sevenStore.store.member.*;
 import com.example.sevenStore.store.order.OrderService;
 import com.example.sevenStore.store.order.OrderServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
 
+    // < 1. 생성자 주입 >
+    /*@Bean
+    public MemberService memberService() {
+        return new MemberServiceImpl(memberRepository());
+    }*/
 
-    /*< 필드주입 >
+    /*< 2. 필드주입 >
     * return 값으로 new MemberServiceImpl()을 호출하여
     * MemberServiceImpl 인스터스를 생성하고 스프링은 @Autowired 를 통해
     * memberRepository를 주입한다.
@@ -40,11 +40,7 @@ public class AppConfig {
         return new MemberServiceImpl();
     }
 
-    // 생성자 주입
-//    @Bean
-//    public MemberService memberService() {
-//        return new MemberServiceImpl(memberRepository());
-//    }
+
     @Bean
     public OrderService orderService() {
         return new OrderServiceImpl(memberRepository(),
